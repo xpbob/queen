@@ -7,16 +7,20 @@ package eightqueen.com;
 
 public class queen {
 
-	public static int m[]=new int[8];
+	public static int m[]=new int[10];
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		show(4);
+		show(8);//八皇后
+		//show(4);//四皇后
+
 
 	}
+
 	public static void show(int d)
 	{
 		int i=0;
+		
 		m[i]=0;
 		i++;
 		while(i>=0)
@@ -25,20 +29,22 @@ public class queen {
 			while(test(i,m[i])==false && m[i]<d)
 				m[i]++;
 			
-			
-			
-			if(m[i]<d)
+			if(m[i]<d && i<d)
 			{
 				
 				if(i==d-1)
 				{
-					print(d);
-					break;
+					print(d);	
+					
+					m[i]++;
+					
 				}
 				else
 				{
+					
 					i++;
 					m[i]=0;
+					
 					
 				}
 				
@@ -46,9 +52,11 @@ public class queen {
 			}
 			else
 			{
+				if(i>0)
+				{
 				i--;
 				m[i]++;
-				
+				}
 			}
 			
 			
@@ -60,6 +68,7 @@ public class queen {
 		{
 		System.out.print(m[i]+",");
 		}
+		System.out.println();
 	}
 	public static boolean test(int x,int y)//判断位置能不能放置
 	{
